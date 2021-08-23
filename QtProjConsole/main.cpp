@@ -9,8 +9,32 @@ int main(int argc, char **argv)
     QCommandLineParser parser;   
     QString optionSet;
     GetCommandLine(app, parser);
+    CheckCommandLineArguments(parser, optionSet, app.applicationDirPath());
   
     return app.exec();
+}
+
+void CheckCommandLineArguments(const QCommandLineParser& parser, QString& optionSet, const QString& defPath)
+{
+    QVector<bool> indexArray;
+    QTextStream out(stdout);
+    if (parser.isSet("p"))
+    {
+        if (parser.isSet("s") || parser.isSet("source"))
+        {
+            optionSet = (parser.positionalArguments()).join("");
+            optionSet.replace('/', '\\');
+        }
+        else if (parser.isSet("d") || parser.isSet("default"))
+        {
+            optionSet = defPath;
+            optionSet.replace('/', '\\');
+            optionSet += "\\source";
+        }
+    }
+    for (auto val : optionSet)
+        out << val;
+    out << Qt::endl;
 }
 
 void GetCommandLine(const QCoreApplication& app, QCommandLineParser& parser)

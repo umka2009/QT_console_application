@@ -20,6 +20,7 @@
 void GetCommandLine(const QCoreApplication& app, QCommandLineParser& parser);
 void SetOptionsSingle(QCommandLineParser& parser);
 void SetOptionsMultiple(QCommandLineParser& parser);
+void CheckCommandLineArguments(const QCommandLineParser& parser, QString& optionSet, const QString& defPath);
 QString GetDescription();
 
 
