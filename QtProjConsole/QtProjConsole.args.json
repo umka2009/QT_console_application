@@ -1,0 +1,44 @@
+{
+  "FileVersion": 2,
+  "Id": "2832f86e-e2ed-462d-8972-dab73887d2c3",
+  "Items": [
+    {
+      "Id": "0bee0aa9-e5a0-4fc9-88a2-c4128782f184",
+      "Command": "p ",
+      "Items": [
+        {
+          "Id": "7958ba3c-0913-408a-a0c4-bd995ea5dfd4",
+          "Command": "-p -s c:\\test\\test.txt"
+        },
+        {
+          "Id": "55c9eaf0-8a61-4502-b1ab-48db63d1da46",
+          "Command": "-p -s"
+        },
+        {
+          "Id": "6bd0d5ba-0cf2-40f1-9db7-61a2647a8e2c",
+          "Command": "-p -p -d"
+        },
+        {
+          "Id": "c1692a39-c9e3-4307-8c4a-1d084978dcc5",
+          "Command": "-h"
+        },
+        {
+          "Id": "6485a4b5-8856-4c8e-a49d-4ecfbecc0b6b",
+          "Command": "-load test\\test\\"
+        },
+        {
+          "Id": "e471f3fa-486a-45f7-8db8-9a9463808b96",
+          "Command": "jjj"
+        },
+        {
+          "Id": "ed64bafe-b1d3-406a-98d8-b4e029080435",
+          "Command": "-s h:\\jhbjhb\\"
+        },
+        {
+          "Id": "78f05e78-4613-40f8-bf78-42a951962812",
+          "Command": "-p h;\\hhhhhh -s k:\\\\khbjk"
+        }
+      ]
+    }
+  ]
+}
