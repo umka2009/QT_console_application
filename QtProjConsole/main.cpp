@@ -3,15 +3,35 @@
 
 int main(int argc, char **argv)
 {
+ 
+    try 
+    {
+        // throw MyException("test");
+        QCoreApplication app(argc, argv);
+        QTextStream out(stdout);
+        QCommandLineParser parser;
+        QString optionSet;
+        GetCommandLine(app, parser);
+        CheckCommandLineArguments(parser, optionSet, app.applicationDirPath());
 
-    QCoreApplication app(argc, argv);
-    QTextStream out(stdout);
-    QCommandLineParser parser;   
-    QString optionSet;
-    GetCommandLine(app, parser);
-    CheckCommandLineArguments(parser, optionSet, app.applicationDirPath());
-  
-    return app.exec();
+        return app.exec();
+        
+
+    }
+    catch (const MyException& message)
+    {
+        qCritical() << "Error : " << message.Get();
+    }
+    catch (const QUnhandledException& message)
+    {
+        qCritical() << "Uncaught error ";
+    }
+    catch(...)
+    {
+        qCritical() << "Uncaught error qexception!";
+    }
+
+
 }
 
 void CheckCommandLineArguments(const QCommandLineParser& parser, QString& optionSet, const QString& defPath)
