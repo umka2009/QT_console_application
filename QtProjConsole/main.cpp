@@ -38,17 +38,9 @@ int main(int argc, char **argv)
     {
         qCritical() << "runtime_error :" << message.what();
     }
-    catch (const toml::syntax_error& message)
+    catch (const toml::exception& message)
     {
-        qCritical() << "syntax_error :" << message.what();
-    }
-    catch (const toml::internal_error& message)
-    {
-        qCritical() << "internal_error :" << message.what();
-    }
-    catch (const toml::type_error& message)
-    {
-        qCritical() << "type_error :" << message.what();
+        qCritical() << "exception :" << message.what();
     }
     catch(...)
     {
