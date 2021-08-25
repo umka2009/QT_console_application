@@ -37,8 +37,6 @@ int main(int argc, char **argv)
 
 void CheckCommandLineArguments(const QCommandLineParser& parser, QString& optionSet, const QString& defPath)
 {
-    QMap<QString, int> indexMap;
-    QTextStream out(stdout);
     ValidatingArguments(parser, indexMap);
     if (parser.isSet("p"))
     {
@@ -54,13 +52,11 @@ void CheckCommandLineArguments(const QCommandLineParser& parser, QString& option
             optionSet += "\\source";
         }
     }
-    for (auto val : optionSet)
-        out << val;
-    out << Qt::endl;
 }
 
-void ValidatingArguments(const QCommandLineParser& parser, QMap<QString, int>& indexMap)
+void ValidatingArguments(const QCommandLineParser& parser)
 {
+    QMap<QString, int> indexMap;
     for (auto val : parser.optionNames())
     {
         auto it = indexMap.find(val);
