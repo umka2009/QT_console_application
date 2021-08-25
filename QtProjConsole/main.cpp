@@ -12,6 +12,7 @@ int main(int argc, char **argv)
         QCommandLineParser parser;
         QString optionSet;
         GetCommandLine(app, parser);
+
         CheckCommandLineArguments(parser, optionSet, app.applicationDirPath());
 
         return app.exec();
@@ -36,8 +37,9 @@ int main(int argc, char **argv)
 
 void CheckCommandLineArguments(const QCommandLineParser& parser, QString& optionSet, const QString& defPath)
 {
-    QVector<bool> indexArray;
+    QMap<QString, int> indexMap;
     QTextStream out(stdout);
+    ValidatingArguments(parser, indexMap);
     if (parser.isSet("p"))
     {
         if (parser.isSet("s") || parser.isSet("source"))
@@ -55,6 +57,26 @@ void CheckCommandLineArguments(const QCommandLineParser& parser, QString& option
     for (auto val : optionSet)
         out << val;
     out << Qt::endl;
+}
+
+void ValidatingArguments(const QCommandLineParser& parser, QMap<QString, int>& indexMap)
+{
+    for (auto val : parser.optionNames())
+    {
+        auto it = indexMap.find(val);
+        if (it != indexMap.end())
+            it.value()++;
+        else
+            indexMap.insert(val, 1);
+    }
+    for(auto it = indexMap.begin(); it != indexMap.end(); ++it)
+        if(it.value() > 1)
+            throw MyException("Duplicate arguments");
+    if (indexMap.size() > 2)
+        throw MyException("A lot of arguments");
+    else if (indexMap.size() < 1)
+        throw MyException("Not enough arguments");
+
 }
 
 void GetCommandLine(const QCoreApplication& app, QCommandLineParser& parser)

@@ -32,5 +32,6 @@ void CheckCommandLineArguments(const QCommandLineParser& parser, QString& option
 
 QString GetDescription();
 
+void ValidatingArguments(const QCommandLineParser& parser, QMap<QString, int>& indexMap);
 
 #endif // MAIN_H
