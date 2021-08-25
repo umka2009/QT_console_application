@@ -1,0 +1,8 @@
+# Документ TOML.
+
+title = "TEST TOML"
+[database]
+numbers = [2,4,8]
+pause   = 400
+[database.answers]
+myanswers = [4,8,16]
