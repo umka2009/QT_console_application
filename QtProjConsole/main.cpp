@@ -14,6 +14,9 @@ int main(int argc, char **argv)
         GetCommandLine(app, parser);
         CheckCommandLineArguments(parser, optionSet, app.applicationDirPath());
 
+        const std::string fname(optionSet.toStdString());
+        const toml::value data = toml::parse(fname);
+
         return app.exec();
     }
     catch (const MyException& message)
@@ -23,6 +26,10 @@ int main(int argc, char **argv)
     catch (const QUnhandledException& message)
     {
         qCritical() << "Uncaught error ";
+    }
+    catch (const std::runtime_error& message)
+    {
+        qCritical() << message.what();
     }
     catch(...)
     {
@@ -44,7 +51,7 @@ void CheckCommandLineArguments(const QCommandLineParser& parser, QString& option
         {
             optionSet = defPath;
             optionSet.replace('/', '\\');
-            optionSet += "\\source";
+            optionSet += "\\source.toml";
         }
     }
 }

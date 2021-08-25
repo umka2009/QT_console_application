@@ -11,6 +11,10 @@
           "Command": "-p -s c:\\test\\test.txt"
         },
         {
+          "Id": "a5c8e50c-e1c8-4c91-bf86-f66e6dbee5ce",
+          "Command": "-p -d"
+        },
+        {
           "Id": "55c9eaf0-8a61-4502-b1ab-48db63d1da46",
           "Command": "-p -s"
         },
