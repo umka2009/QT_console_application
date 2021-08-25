@@ -15,6 +15,8 @@
 #include <QVector>
 #include <memory>
 
+#include <toml.hpp>
+
 #include "MyException.h"
 
 
