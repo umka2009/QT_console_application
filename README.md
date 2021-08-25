@@ -11,3 +11,4 @@ Required functionality<br>
 Visual Studio 2019<br>
 Qt 6.1.2<br>
 C++ 17<br>
+toml<br>
