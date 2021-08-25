@@ -25,12 +25,18 @@
     <ClCompile Include="MyException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MyClassWorker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="MyException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyClassWorker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

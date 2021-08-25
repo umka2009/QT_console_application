@@ -4,7 +4,7 @@
 #define MYEXCEPTION_H
 
 #include <QException>
-// #include <QtConcurrent>
+
 class MyException : public QException
 {
 public:

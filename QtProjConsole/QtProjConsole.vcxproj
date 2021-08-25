@@ -131,10 +131,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="MyClassWorker.cpp" />
     <ClCompile Include="MyException.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MyClassWorker.h" />
     <ClInclude Include="MyException.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>

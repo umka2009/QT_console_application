@@ -14,7 +14,7 @@
 #include <qfileinfo.h>
 #include <QVector>
 #include <memory>
-
+#include <QThread>
 #include <toml.hpp>
 
 #include "MyException.h"

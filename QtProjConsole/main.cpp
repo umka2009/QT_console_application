@@ -14,15 +14,21 @@ int main(int argc, char **argv)
         GetCommandLine(app, parser);
         CheckCommandLineArguments(parser, optionSet, app.applicationDirPath());
 
-        const std::string fname(optionSet.toStdString());
-        const toml::value data = toml::parse(fname);
-        const auto title = toml::find<std::string>(data, "title");
-        const auto& database = toml::find(data, "database");
-        const auto numbers = toml::find<QVector<int> >(database, "numbers");
-        const auto pause = toml::find<int>(database, "pause");
-        const auto myanswers = toml::find<QVector<int> >(data, "database", "answers", "myanswers");
-        
+        if (optionSet.size() > 0) 
+        {
+            const std::string fname(optionSet.toStdString());
+            const toml::value data = toml::parse(fname);
+            const auto title = toml::find<std::string>(data, "title");
+            const auto& database = toml::find(data, "database");
+            const auto numbers = toml::find<QVector<int> >(database, "numbers");
+            const auto pause = toml::find<int>(database, "pause");
+            const auto myanswers = toml::find<QVector<int> >(data, "database", "answers", "myanswers");
 
+        }
+        else
+        {
+            throw MyException("Not enough arguments");
+        }
 
         return app.exec();
     }
