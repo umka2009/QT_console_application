@@ -12,12 +12,9 @@ int main(int argc, char **argv)
         QCommandLineParser parser;
         QString optionSet;
         GetCommandLine(app, parser);
-
         CheckCommandLineArguments(parser, optionSet, app.applicationDirPath());
 
         return app.exec();
-        
-
     }
     catch (const MyException& message)
     {
@@ -31,13 +28,11 @@ int main(int argc, char **argv)
     {
         qCritical() << "Uncaught error qexception!";
     }
-
-
 }
 
 void CheckCommandLineArguments(const QCommandLineParser& parser, QString& optionSet, const QString& defPath)
 {
-    ValidatingArguments(parser, indexMap);
+    ValidatingArguments(parser);
     if (parser.isSet("p"))
     {
         if (parser.isSet("s") || parser.isSet("source"))
@@ -72,7 +67,6 @@ void ValidatingArguments(const QCommandLineParser& parser)
         throw MyException("A lot of arguments");
     else if (indexMap.size() < 1)
         throw MyException("Not enough arguments");
-
 }
 
 void GetCommandLine(const QCoreApplication& app, QCommandLineParser& parser)
