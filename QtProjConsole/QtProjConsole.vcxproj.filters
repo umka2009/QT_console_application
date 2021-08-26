@@ -28,6 +28,9 @@
     <ClCompile Include="MyClassWorker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SumDataBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -36,8 +39,13 @@
     <ClInclude Include="MyException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MyClassWorker.h">
+    <ClInclude Include="SumDataBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="MyClassWorker.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
 </Project>

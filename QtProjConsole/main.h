@@ -15,9 +15,12 @@
 #include <QVector>
 #include <memory>
 #include <QThread>
+#include <QObject>
 #include <toml.hpp>
 
 #include "MyException.h"
+#include "MyClassWorker.h"
+#include "SumDataBase.h"
 
 
 //#include <QList>

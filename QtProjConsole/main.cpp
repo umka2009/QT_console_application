@@ -24,6 +24,17 @@ int main(int argc, char **argv)
             const auto pause = toml::find<int>(database, "pause");
             const auto myanswers = toml::find<QVector<int> >(data, "database", "answers", "myanswers");
 
+            QThread* thread = new QThread();
+            MyClassWorker* worker = new MyClassWorker();
+            worker->moveToThread(thread);
+            //connect(worker, &Worker::error, this, &MyClass::errorString);
+            worker->initialize(data);
+            QObject::connect(thread, &QThread::started, worker, &MyClassWorker::processSum);
+            QObject::connect(worker, &MyClassWorker::finished, thread, &QThread::quit);
+            QObject::connect(worker, &MyClassWorker::finished, worker, &MyClassWorker::deleteLater);
+            QObject::connect(thread, &QThread::finished, thread, &QThread::deleteLater);
+            thread->start();
+
         }
         else
         {

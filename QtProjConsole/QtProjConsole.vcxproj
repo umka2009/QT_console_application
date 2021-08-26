@@ -134,9 +134,11 @@
     <ClCompile Include="MyClassWorker.cpp" />
     <ClCompile Include="MyException.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SumDataBase.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MyClassWorker.h" />
+    <ClInclude Include="SumDataBase.h" />
+    <QtMoc Include="MyClassWorker.h" />
     <ClInclude Include="MyException.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
