@@ -6,3 +6,9 @@ Required functionality<br>
 <b>2)</b>The main process must contain threads.<br> The application must be multithreaded.<br>
 <b>3)</b>All flows shall be approximately equally loaded.<br>
 <b>4)</b>We will consider something and output the result.<br><hr>
+
+<b>Settings for the project</b><br>
+Visual Studio 2019<br>
+Qt 6.1.2<br>
+C++ 17<br>
+toml<br>
