@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
             stdThread1.join();
             stdThread2.join();
             stdThread3.join();
-            std::cout << "Worker stop.";
+            std::cout << " Worker stop." << " sum : " << test.Getrez();
         }
     }
     catch (const std::exception& err)
