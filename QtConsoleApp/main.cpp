@@ -2,7 +2,7 @@
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication app(argc, argv);
+     QCoreApplication app(argc, argv);
     try
     {
         std::string fileName = "";
@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
             stdThread1.join();
             stdThread2.join();
             stdThread3.join();
+            std::cout << "Worker stop.";
         }
     }
     catch (const std::exception& err)
@@ -28,7 +29,7 @@ int main(int argc, char *argv[])
         qCritical() << "Uncaught error exception!"; 
     }
 
-    return app.exec();
+     return app.exec();
 }
 
 std::string GetDescription()
@@ -62,7 +63,6 @@ bool CheckCommandArgument(int& argc,char* argv1[], std::string& fileName)
         fileName = "source.toml";
     }
 
-    // в toml.hpp нет проверки расширения файла, вроде он и не нужен ?
     return true;
 }
 
