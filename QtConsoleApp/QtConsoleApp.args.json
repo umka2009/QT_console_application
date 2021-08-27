@@ -28,7 +28,7 @@
         },
         {
           "Id": "e2d0c602-f59a-4b77-a2fe-12161e23a85d",
-          "Command": "-f source2.toml"
+          "Command": "-f source3Copy.tom"
         },
         {
           "Id": "4cbcb742-081e-4dca-89f7-ce3a867bda6d",

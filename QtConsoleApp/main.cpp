@@ -2,18 +2,21 @@
 
 int main(int argc, char *argv[])
 {
-   
-    QTextStream out(stdout);
     try
     {
-  
         std::string fileName = "";
         if (CheckCommandArgument(argc, argv, fileName))
         {
-            out << Qt::endl;
+            const toml::value data = toml::parse(fileName);
+            const auto pause = toml::find<int>(data, "database", "pause");
+            Worker test(pause);
+            std::thread stdThread1(Process, std::ref(test));
+            std::thread stdThread2(Process, std::ref(test));
+            std::thread stdThread3(Process, std::ref(test));
+            stdThread1.join();
+            stdThread2.join();
+            stdThread3.join();
         }
-
-        out << Qt::endl;
     }
     catch (const std::exception& err)
     {
@@ -58,6 +61,12 @@ bool CheckCommandArgument(int& argc,char* argv1[], std::string& fileName)
         fileName = "source.toml";
     }
 
-    // если в toml.hpp нет проверкиб необходима проверка расширения файла
+    // в toml.hpp нет проверки расширения файла, вроде он и не нужен ?
     return true;
 }
+
+void Process(Worker& temp)
+{
+    // temp.ThreadFunction();
+    temp.ThreadFunction2();
+};

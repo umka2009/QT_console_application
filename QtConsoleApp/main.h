@@ -14,8 +14,10 @@
 #include <toml.hpp>
 #include <exception>
 #include <QTextStream>
+#include "Worker.h"
 
 std::string GetDescription();
 bool CheckCommandArgument(int& argc,char* argv1[], std::string& fileName);
+void Process(Worker& temp);
 
 #endif // !MAIN_H
