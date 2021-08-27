@@ -2,6 +2,7 @@
 
 int main(int argc, char *argv[])
 {
+    QCoreApplication app(argc, argv);
     try
     {
         std::string fileName = "";
@@ -24,10 +25,10 @@ int main(int argc, char *argv[])
     }
     catch (...)
     {
-        qCritical() << "Uncaught error exception!";
+        qCritical() << "Uncaught error exception!"; 
     }
 
-    return 0;
+    return app.exec();
 }
 
 std::string GetDescription()
