@@ -1,0 +1,48 @@
+{
+  "FileVersion": 2,
+  "Id": "962a91e7-5ab6-4dbd-9494-d3df0811ba17",
+  "Items": [
+    {
+      "Id": "6725599e-f9bb-4a72-8583-b069017c0a77",
+      "Command": "d",
+      "Items": [
+        {
+          "Id": "c8ddea2f-1abd-41b0-ac79-3d376398d842",
+          "Command": "-h"
+        },
+        {
+          "Id": "6c5c12c4-26f6-4e2c-a537-f33168302d20",
+          "Command": "--help"
+        },
+        {
+          "Id": "d204fc98-6f0b-4e58-9f92-85cbfa457dca",
+          "Command": "-d"
+        },
+        {
+          "Id": "2376b47f-b2fb-4d89-816a-a2491fd0884c",
+          "Command": "--default"
+        },
+        {
+          "Id": "5bf62eed-a4f2-4f77-9266-1cff0501b0d8",
+          "Command": "-f source.toml"
+        },
+        {
+          "Id": "e2d0c602-f59a-4b77-a2fe-12161e23a85d",
+          "Command": "-f source2.toml"
+        },
+        {
+          "Id": "4cbcb742-081e-4dca-89f7-ce3a867bda6d",
+          "Command": "-ff"
+        },
+        {
+          "Id": "69780520-a26a-4c86-9a93-7a6cc22ee8f3",
+          "Command": "-f "
+        },
+        {
+          "Id": "a726939e-663f-4bfb-8cb9-1086dc4bf1fa",
+          "Command": "--file sourced.toml -d"
+        }
+      ]
+    }
+  ]
+}
