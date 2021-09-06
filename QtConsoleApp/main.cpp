@@ -35,8 +35,8 @@ int main(int argc, char *argv[])
 std::string GetDescription()
 {
     std::string description;
-    description += "Console application that accepts a configuration file as a parameter.\n";
-    description += "The file from which the application should read the parameter list\n";
+    description += "Console application that accepts a configuration files as a parameters\n";
+    description += "The files from which the application should read the parameters\n";
     description += "must be in .toml format<br> (Filename extension - .toml )";
     return description;
 }

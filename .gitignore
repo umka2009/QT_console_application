@@ -11,4 +11,5 @@ packages
 =======
 .user
 QtProjConsole_test
+QtConsoleApp.args.json
 >>>>>>> console_app
