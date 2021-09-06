@@ -1,6 +1,14 @@
+<<<<<<< HEAD
 QtProjConsole
+=======
+>>>>>>> console_app
 x64
 .vs
 Debug
 packages
+<<<<<<< HEAD
 .user
+=======
+.user
+QtProjConsole_test
+>>>>>>> console_app
