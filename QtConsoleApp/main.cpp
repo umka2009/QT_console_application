@@ -37,7 +37,8 @@ std::string GetDescription()
     std::string description;
     description += "Console application that accepts a configuration files as a parameters\n";
     description += "The files from which the application should read the parameters\n";
-    description += "must be in .toml format<br> (Filename extension - .toml )";
+    description += "must be in .toml format<br> (Filename extension - .toml )\n";
+    description += "The required list of files are listed separated by a space.\n";
     return description;
 }
 
