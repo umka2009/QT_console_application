@@ -17,11 +17,19 @@ int main(int argc, char *argv[])
             for (const auto& it : dataProcessing)
                 sumWorker.emplace_back(pause, action, it);
             
-            WrapperThread sum;
-            for (auto& it : sumWorker)
-                sum.Emplace_back(std::thread(&Worker::ThreadFunction, std::ref(it)));
+            //WrapperThread sum;
+            //for (auto& it : sumWorker)
+            //    sum.Emplace_back(std::thread(&Worker::ThreadFunction, std::ref(it)));
 
-            // PrintSum(sumWorker);
+            int sizeBuf = 1024;
+            int ThreadNum = 2;
+            WrapperThread sumParalelRead;
+            for (auto& it : sumWorker)
+                sumParalelRead.Emplace_back(std::thread(&Worker::ThreadsReadFile, std::ref(it), sizeBuf, ThreadNum));
+
+            sumParalelRead.~WrapperThread();
+
+            PrintSum(sumWorker);
         }
     }
     catch (const std::exception& err)
@@ -75,5 +83,5 @@ void PrintSum(const std::vector<Worker>& temp)
 {
     size_t workerNum = 1;
     for (auto it = temp.begin(); it != temp.end(); ++it)
-        std::cout << "Worker : "<< (workerNum++) << "Sum from file : " << it->Getrez() << std::endl;
+        std::cout << "Worker : "<< (workerNum++) << " Sum from file : " << it->Getrez() << std::endl;
 };
