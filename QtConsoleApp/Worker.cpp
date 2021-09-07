@@ -19,27 +19,30 @@ void Worker::ThreadFunction() {
         }
 
         auto tempIterEnd = std::istreambuf_iterator<unsigned char>();
-        auto tempIter = std::istreambuf_iterator<unsigned char>(fileStream);
+        auto tempIterBegin = std::istreambuf_iterator<unsigned char>(fileStream);
         int temp = 0;
-        auto tempIterBegin = tempIter;
-        auto findSpace = [&tempIterBegin](auto val)
+        std::string buf;
+        auto findSpace = [&buf](auto val)
         {
-            tempIterBegin++;
+            if(val != ' ')
+                buf += val;     
             return val == ' ';
         };
-        while (auto it = (std::find_if(tempIter , tempIterEnd, findSpace)) != tempIterEnd)
+        for (auto it = std::find_if(tempIterBegin, tempIterEnd, findSpace); it != tempIterEnd; it = (std::find_if(tempIterBegin, tempIterEnd, findSpace)))
         {
             if (action == "+")
             {
-                temp += std::stoi(std::string(tempIterBegin, tempIter));
-                tempIterBegin = tempIter;
+                temp += std::stoi(buf);
+                tempIterBegin = it;
+                tempIterBegin++;
+                buf.clear();
                 std::this_thread::sleep_for(std::chrono::seconds(pause));
             }
             else
                 throw std::runtime_error("Can not [operators] action : " + action + " file :" + filePath);
         }
         // сохранение резельтата
-        rez += temp;
+        rez = temp;
     }
     catch (const std::exception& err)
     {
