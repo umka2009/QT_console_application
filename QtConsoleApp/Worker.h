@@ -21,6 +21,7 @@ public:
 
 	// parallel execution
 	void ThreadFunction();
+	void ThreadsReadFile();
 	int Getrez() const { return rez; };
 private:
 	int pause;
