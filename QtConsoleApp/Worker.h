@@ -14,7 +14,7 @@ class Worker
 {
 public:
 
-	Worker(int pause_);
+	Worker(int pause_,const std::string& action);
 	~Worker();
 	// последовательное выполнение 
 	void ThreadFunction();
@@ -25,6 +25,7 @@ private:
 	std::recursive_mutex g_lock;
 	int pause;
 	int rez;
+	std::string action;
 };
 
 #endif // !WORKER_H

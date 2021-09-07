@@ -1,6 +1,6 @@
 #include "Worker.h"
 
-Worker::Worker(int pause_) : pause(pause_)
+Worker::Worker(int pause_, const std::string& action_) : pause(pause_), action(action_)
 {
 };
 Worker::~Worker()
