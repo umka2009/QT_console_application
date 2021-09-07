@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
                 sumParalelRead.Emplace_back(std::thread(&Worker::ThreadsReadFile, std::ref(it), sizeBuf, ThreadNum));
 
             sumParalelRead.~WrapperThread();
-
+            // ожидаем завершения потоков и выводим на печать
             PrintSum(sumWorker);
         }
     }
