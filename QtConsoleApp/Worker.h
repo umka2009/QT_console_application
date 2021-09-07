@@ -4,6 +4,8 @@
 #define WORKER_H
 
 #include <thread>
+#include <algorithm>
+#include <fstream>
 #include <vector>
 #include <iostream>
 #include <chrono>
@@ -14,18 +16,17 @@ class Worker
 {
 public:
 
-	Worker(int pause_,const std::string& action);
+	Worker(int pause_,const std::string& action, const std::string& filePath);
 	~Worker();
-	// последовательное выполнение 
+
+	// parallel execution
 	void ThreadFunction();
-	// паралельное выполнение
-	void ThreadFunction2();
 	int Getrez() const { return rez; };
 private:
-	std::recursive_mutex g_lock;
 	int pause;
 	int rez = 0;
 	std::string action;
+	std::string filePath;
 };
 
 #endif // !WORKER_H
