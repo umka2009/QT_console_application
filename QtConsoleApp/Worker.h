@@ -24,7 +24,7 @@ public:
 private:
 	std::recursive_mutex g_lock;
 	int pause;
-	int rez;
+	int rez = 0;
 	std::string action;
 };
 
