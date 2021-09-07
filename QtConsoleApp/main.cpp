@@ -37,7 +37,7 @@ std::string GetDescription()
     std::string description;
     description += "Console application that accepts a configuration files as a parameters\n";
     description += "The files from which the application should read the parameters\n";
-    description += "must be in .conf format<br> (Filename extension - .conf )\n";
+    description += "must be in .toml format<br> (Filename extension - .toml )\n";
     description += "The required list of files are listed separated by a space.\n";
     return description;
 }
@@ -45,23 +45,23 @@ std::string GetDescription()
 bool CheckCommandArgument(int& argc,char* argv1[], std::string& fileName)
 {
     fileName = "";
-    CLI::App app{ GetDescription(), "Console read .conf" };
+    CLI::App app{ GetDescription(), "Console read .toml" };
     bool my_flag1{ false };
-    app.set_help_flag("-h,--help", "Default source file to read \"nameSource.conf\".\n <-f | -d> | <--file | --default> [source] ");
-    app.add_flag("-d, --default", my_flag1, "Default source file name to read \"source.conf\",\nignore option [-f], [--file] .")->take_last();
-    app.add_option("-f, --file", fileName, "Source file to read \"nameSource.conf\".")->take_last()->check(CLI::ExistingPath);
+    app.set_help_flag("-h,--help", "Default source file to read \"nameSource.toml\".\n <-f | -d> | <--file | --default> [source] ");
+    app.add_flag("-d, --default", my_flag1, "Default source file name to read \"source.toml\",\nignore option [-f], [--file] .")->take_last();
+    app.add_option("-f, --file", fileName, "Source file to read \"nameSource.toml\".")->take_last()->check(CLI::ExistingPath);
 
     CLI11_PARSE(app, argc, argv1);
     if (my_flag1)
     {
-        auto path_result = CLI::detail::check_path("source.conf");
+        auto path_result = CLI::detail::check_path("source.toml");
         if (path_result == CLI::detail::path_type::nonexistent) {
-            throw CLI::ValidationError("File does not exist, default source : source.conf");
+            throw CLI::ValidationError("File does not exist, default source : source.toml");
         }
         if (path_result == CLI::detail::path_type::directory) {
             throw CLI::ValidationError("File is actually a directory: source ");
         }
-        fileName = "source.conf";
+        fileName = "source.toml";
     }
 
     return true;
