@@ -15,6 +15,7 @@
 #include <exception>
 #include <QTextStream>
 #include "Worker.h"
+#include "WrapperThread.h"
 
 std::string GetDescription();
 bool CheckCommandArgument(int& argc,char* argv1[], std::string& fileName);

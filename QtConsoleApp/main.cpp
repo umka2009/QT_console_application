@@ -13,6 +13,12 @@ int main(int argc, char *argv[])
             const auto pause = toml::find(data, "database", "pause");
             const auto action = toml::find<std::string >(data, "operators", "action");
             std::cout << std::endl;
+            std::vector<Worker> sumWorker = {};
+            for (auto it : dataProcessing)
+                sumWorker.emplace_back(pause, action, it);
+            WrapperThread sum;
+            //for (auto it : sumWorker)
+            //sum.Emplace_back(std::thread(std::ref(ThreadFunction), ))
            // Worker test(pause);
             //std::thread stdThread1(Process, std::ref(test));
             //std::thread stdThread2(Process, std::ref(test));
@@ -72,6 +78,5 @@ bool CheckCommandArgument(int& argc,char* argv1[], std::string& fileName)
 
 void Process(Worker& temp)
 {
-    // temp.ThreadFunction();
-    temp.ThreadFunction2();
+    temp.ThreadFunction();
 };
