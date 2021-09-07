@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LocalDebuggerCommandArguments>-h -f source.conf</LocalDebuggerCommandArguments>
-    <RemoteDebuggerCommandArguments>-h -f source.conf</RemoteDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>-f source.toml</LocalDebuggerCommandArguments>
+    <RemoteDebuggerCommandArguments>-f source.toml</RemoteDebuggerCommandArguments>
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <QtLastBackgroundBuild>2021-09-06T16:49:44.0067390Z</QtLastBackgroundBuild>
+    <QtLastBackgroundBuild>2021-09-07T02:11:56.4067639Z</QtLastBackgroundBuild>
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <QtLastBackgroundBuild>2021-08-26T14:13:04.5018263Z</QtLastBackgroundBuild>

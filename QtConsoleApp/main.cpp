@@ -9,15 +9,18 @@ int main(int argc, char *argv[])
         if (CheckCommandArgument(argc, argv, fileName))
         {
             const toml::value data = toml::parse(fileName);
-            const auto pause = toml::find<int>(data, "database", "pause");
-            Worker test(pause);
-            std::thread stdThread1(Process, std::ref(test));
-            std::thread stdThread2(Process, std::ref(test));
-            std::thread stdThread3(Process, std::ref(test));
-            stdThread1.join();
-            stdThread2.join();
-            stdThread3.join();
-            std::cout << " Worker stop." << " sum : " << test.Getrez();
+            const auto dataProcessing = toml::find<std::vector<std::string> >(data, "database", "numbers");
+            const auto pause = toml::find(data, "database", "pause");
+            const auto action = toml::find<std::string >(data, "operators", "action");
+            std::cout << std::endl;
+           // Worker test(pause);
+            //std::thread stdThread1(Process, std::ref(test));
+            //std::thread stdThread2(Process, std::ref(test));
+            //std::thread stdThread3(Process, std::ref(test));
+            //stdThread1.join();
+            //stdThread2.join();
+            //stdThread3.join();
+            //std::cout << " Worker stop." << " sum : " << test.Getrez();
         }
     }
     catch (const std::exception& err)
