@@ -15,8 +15,8 @@ public:
 	size_t Size() const;
 	const std::thread& operator[] (size_t it) const;
 
-	 WrapperThread(const WrapperThread& tmpThread) = delete;
-	 WrapperThread& operator=(const WrapperThread& tmpThread) = delete;
+	WrapperThread(const WrapperThread& tmpThread) = delete;
+	WrapperThread& operator=(const WrapperThread& tmpThread) = delete;
 
 private:
 	std::vector<std::thread> myThread = {};

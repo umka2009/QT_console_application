@@ -19,6 +19,6 @@
 
 std::string GetDescription();
 bool CheckCommandArgument(int& argc,char* argv1[], std::string& fileName);
-void Process(Worker& temp);
+void PrintSum(const std::vector<Worker>& temp);
 
 #endif // !MAIN_H

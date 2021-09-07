@@ -20,9 +20,8 @@ int main(int argc, char *argv[])
             WrapperThread sum;
             for (auto& it : sumWorker)
                 sum.Emplace_back(std::thread(&Worker::ThreadFunction, std::ref(it)));
-            
-                std::cout << std::endl;
-            //std::cout << " Worker stop." << " sum : " << test.Getrez();
+
+            // PrintSum(sumWorker);
         }
     }
     catch (const std::exception& err)
@@ -72,7 +71,9 @@ bool CheckCommandArgument(int& argc,char* argv1[], std::string& fileName)
     return true;
 }
 
-void Process(Worker& temp)
+void PrintSum(const std::vector<Worker>& temp)
 {
-    temp.ThreadFunction();
+    size_t workerNum = 1;
+    for (auto it = temp.begin(); it != temp.end(); ++it)
+        std::cout << "Worker : "<< (workerNum++) << "Sum from file : " << it->Getrez() << std::endl;
 };
