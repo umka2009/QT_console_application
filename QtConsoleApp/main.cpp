@@ -10,13 +10,14 @@ int main(int argc, char *argv[])
         {
             const toml::value data = toml::parse(fileName);
             const auto dataProcessing = toml::find<std::vector<std::string> >(data, "database", "numbers");
-            const auto pause = toml::find(data, "database", "pause");
+            const auto pause = toml::find<int >(data, "database", "pause");
             const auto action = toml::find<std::string >(data, "operators", "action");
-            std::cout << std::endl;
+
             std::vector<Worker> sumWorker = {};
-            for (auto it : dataProcessing)
+            for (const auto& it : dataProcessing)
                 sumWorker.emplace_back(pause, action, it);
-            WrapperThread sum;
+            std::cout << std::endl;
+            // WrapperThread sum;
             //for (auto it : sumWorker)
             //sum.Emplace_back(std::thread(std::ref(ThreadFunction), ))
            // Worker test(pause);

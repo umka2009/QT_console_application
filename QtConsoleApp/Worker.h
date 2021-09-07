@@ -16,7 +16,7 @@ class Worker
 {
 public:
 
-	Worker(int pause_,const std::string& action, const std::string& filePath);
+	Worker(int pause_, const std::string& action, const std::string& filePath_);
 	~Worker();
 
 	// parallel execution
