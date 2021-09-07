@@ -25,12 +25,18 @@
     <ClCompile Include="Worker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="WrapperThread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Worker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WrapperThread.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
