@@ -16,17 +16,12 @@ int main(int argc, char *argv[])
             std::vector<Worker> sumWorker = {};
             for (const auto& it : dataProcessing)
                 sumWorker.emplace_back(pause, action, it);
-            std::cout << std::endl;
-            // WrapperThread sum;
-            //for (auto it : sumWorker)
-            //sum.Emplace_back(std::thread(std::ref(ThreadFunction), ))
-           // Worker test(pause);
-            //std::thread stdThread1(Process, std::ref(test));
-            //std::thread stdThread2(Process, std::ref(test));
-            //std::thread stdThread3(Process, std::ref(test));
-            //stdThread1.join();
-            //stdThread2.join();
-            //stdThread3.join();
+            
+            WrapperThread sum;
+            for (auto& it : sumWorker)
+                sum.Emplace_back(std::thread(&Worker::ThreadFunction, std::ref(it)));
+            
+                std::cout << std::endl;
             //std::cout << " Worker stop." << " sum : " << test.Getrez();
         }
     }
