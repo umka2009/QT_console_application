@@ -24,12 +24,11 @@ public:
 	Worker(int pause_, const std::string& action, const std::string& filePath_);
 	~Worker();
 
-	// parallel execution
 	void ThreadFunction();
 	void ThreadsReadFile(size_t numThreads);
-	void Sum(std::string_view buf, std::recursive_mutex& lock);  // std::string_view
+	void Sum(std::string_view buf, std::recursive_mutex& lock);  
 	int Getrez() const { return rez; };
-	// std::recursive_mutex lock;
+
 private:
 	void UsefulCutting(std::string& temp, std::uintmax_t& sizeBufTemp);
 	int pause;
