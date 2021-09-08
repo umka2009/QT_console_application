@@ -21,8 +21,9 @@ int main(int argc, char *argv[])
             //for (auto& it : sumWorker)
             //    sum.Emplace_back(std::thread(&Worker::ThreadFunction, std::ref(it)));
 
-            int ThreadNum = 2;
-            WrapperThread sumParalelRead;
+            int ThreadNum = 2;  // sum Threads read one file = ThreadNum + 1
+
+            WrapperThread sumParalelRead; // all sum Threads read = (sum file * (file = ThreadNum + 1))
             for (auto& it : sumWorker)
                 sumParalelRead.Emplace_back(std::thread(&Worker::ThreadsReadFile, std::ref(it), ThreadNum));
 
