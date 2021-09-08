@@ -21,7 +21,7 @@ void Worker::ThreadFunction() {
         auto tempIterEnd = std::istreambuf_iterator<unsigned char>();
         auto tempIterBegin = std::istreambuf_iterator<unsigned char>(fileStream);
         int temp = 0;
-        std::string buf;
+        std::string buf = "";
         auto findSpace = [&buf](auto val)
         {
             if(val != ' ')
@@ -55,25 +55,32 @@ void Worker::ThreadFunction() {
 
 };
 
-void Worker::ThreadsReadFile(int sizeBuf, int numThreads)
+void Worker::ThreadsReadFile(size_t numThreads)
 {
     try
     {
-        
         WrapperThread paralelRead;
         std::recursive_mutex lock;
         //std::cout << "threadId : " << std::this_thread::get_id() << std::endl;
-        std::uintmax_t size = fs::file_size(filePath) / 2;
-        std::uintmax_t sizeBufTemp = (size / numThreads <= sizeBuf) ? sizeBuf : size / numThreads ;
-        std::ifstream fileStream(filePath, std::ios::binary | std::fstream::in);
-
+        std::uintmax_t size = fs::file_size(filePath);
+        if (numThreads % 2 != 0)
+            numThreads++;
+        std::uintmax_t sizeBufTemp = size / numThreads ;
+        std::fstream fileStream(filePath, std::ios::binary | std::fstream::in);
+        std::uintmax_t sizeBuf = 0;
         if (fileStream.is_open())
         {
-            std::string temp(sizeBufTemp, '\0');
-            while (fileStream && !fileStream.eof())
+            
+            for (int i = 0; sizeBuf < size; ++i)  // && !fileStream.eof()
             {
-                fileStream.getline(&temp[0], sizeBufTemp, '\0');
+                std::string temp(sizeBufTemp, '\0');
+                fileStream.seekg(sizeBuf, std::ios::beg);
+                fileStream.read(&temp[0], sizeBufTemp);
+
+                UsefulCutting(temp, sizeBufTemp);
+                    
                 paralelRead.Emplace_back(std::thread(&Worker::Sum, this, temp, std::ref(lock)));
+                sizeBuf += sizeBufTemp;
             }
         }
         else
@@ -107,13 +114,25 @@ void Worker::Sum(std::string_view buf, std::recursive_mutex& lock)
             std::regex reg("^[0-9]{1,10}$");
             if (std::regex_match(tempBuf, reg))
                 temp += std::stoi(tempBuf);
-            tempIterBegin = it;
-            tempIterBegin++;
-            std::this_thread::sleep_for(std::chrono::seconds(pause));
+            tempIterBegin = it + 1;
         }
+        std::this_thread::sleep_for(std::chrono::seconds(pause));
     }
     else
         throw std::runtime_error("Can not [operators] action : " + action + " file :" + filePath);
     std::unique_lock<std::recursive_mutex > locker(lock);
     rez += temp;
+};
+
+void Worker::UsefulCutting(std::string& temp, std::uintmax_t& sizeBufTemp)
+{
+    if (*(temp.end() - 1) != ' ')
+    {
+        auto test = [&sizeBufTemp](auto val)
+        {
+            sizeBufTemp--;
+            return val == ' ' || val == '\0';
+        };
+        temp.erase(std::find_if(temp.rbegin(), temp.rend(), test).base(), temp.end());
+    }
 };
