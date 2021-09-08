@@ -21,11 +21,10 @@ int main(int argc, char *argv[])
             //for (auto& it : sumWorker)
             //    sum.Emplace_back(std::thread(&Worker::ThreadFunction, std::ref(it)));
 
-            int sizeBuf = 1024;
             int ThreadNum = 2;
             WrapperThread sumParalelRead;
             for (auto& it : sumWorker)
-                sumParalelRead.Emplace_back(std::thread(&Worker::ThreadsReadFile, std::ref(it), sizeBuf, ThreadNum));
+                sumParalelRead.Emplace_back(std::thread(&Worker::ThreadsReadFile, std::ref(it), ThreadNum));
 
             sumParalelRead.~WrapperThread();
             // ожидаем завершения потоков и выводим на печать
